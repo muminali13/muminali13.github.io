@@ -1,0 +1,293 @@
+/* ------------------ Global ------------------
+https://9elements.com/blog/pure-css-diagonal-layouts/ 
+*/
+:root {
+	--width-to-height-ratio: 0.09719; /* tan(11°)/2 */
+	--content-width: 100vw;
+	--skew-padding: calc(var(--content-width) * var(--width-to-height-ratio));
+}
+
+body {
+    background-color: white;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+/* ------------------ Banner Image and text ------------------ */
+h1 {
+    margin-bottom: 1em;
+    font-size: 3em;
+}
+
+#banner {
+    height: 50%;
+    top: 0;
+    z-index: -1;
+    text-align: center;
+    color: white;
+    
+    font-family: 'Courier New', Courier, monospace;
+
+    padding: 3em;
+
+    /* "linear-gradient" to darken background effect to the image. This will make the text easier to read */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./img/Code-banner.jpg");
+
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+}
+
+/* ------------------ Nav Bar ------------------ */
+
+nav {
+    background-color: #355d93;
+
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+
+    border-bottom: 1px white solid;
+
+    z-index: 100;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: inline;
+}
+
+li a {
+    display: block;
+    float:left;
+    background-color: #3d6ca8;
+    padding: 1em;
+
+    border-right: white 1px solid;
+}
+
+li a:hover {
+    background-color: #8ebefe;
+    color:#182a41
+}
+
+.active {
+    background-color: #bddaff;
+    color:#0d1622;
+    font-weight: bold;
+}
+
+
+/* ------------------ Main Content ------------------*/
+
+/* Diagonal sections */
+
+.content h2 {
+    border-bottom: 2px solid white;
+    text-align: center;
+    margin: 1em;
+}
+
+
+.diagonal-box {
+    transform: skewY(-11deg);
+    margin-top: 3px;
+} 
+
+.content { 	
+    padding: var(--skew-padding) 0 var(--skew-padding) 0;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+	max-width: 50em;
+    margin: 0 auto; 
+    transform: skewY(11deg);
+    text-align: center;
+}
+
+
+#profile-img {
+    width: 15em;
+    display: block;
+    margin: 0 auto 0 auto;
+
+    border-radius: 50%;
+}
+
+#about {
+    margin-top: var(--skew-padding);
+    background-color: white;
+    color:#182a41;
+    text-align: center;
+}
+
+.content > a {
+    padding: 1em;
+    background-color: white;
+    color: #0d1622;
+    border-radius: 2em;
+
+}
+
+.content > a:hover {
+    font-weight: bold;
+}
+
+#about a {
+    background-color: #4182d6;
+    color: white;
+}
+
+#col1 {
+    background-image: linear-gradient(180deg, #8ebefe, #4c678a);
+}
+
+#col2 {
+    background-image: linear-gradient(180deg, #4c678a, #233c5c);
+}
+
+#col3 {
+    background-image: linear-gradient(180deg, #233c5c, #091018);
+}
+
+/* Project view */
+.project-summary-view {
+    margin: 1em 0;
+    width: 40%;
+    min-width: 200px;
+    padding: 0em;
+    color: white;
+    border-radius: 0;
+
+    background-color: #233c5c;
+    /* border: 2px solid white; */
+    display: inline-block;
+    transition: 0.4s ease-in-out;
+
+}
+
+.project-summary-view:hover {
+
+    border: 2px solid white;
+    display: inline-block;
+
+    cursor: pointer;
+    box-shadow: 0px 15px 35px rgb(0, 0, 0, 0.5  );
+    transform: scale(1.03);
+}
+
+.project-summary-view img {
+    width: 100%;
+    border-radius: 0;
+    border-bottom: 2px white solid;
+}
+
+figcaption {
+    /* padding:0.5em; */
+    margin: 1vh 0px;
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+figcaption span {
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+/* Blog view */
+.blog-summary-view {
+    text-align: left;
+    margin: 1em;
+    padding: 1em;;
+}
+
+#time-container {
+    float: inline-start;
+    display: block;
+    padding: 1em;
+    width: 20%;
+    min-height: 100%;
+    border-right: 5px solid rgba(255, 255, 255, 0.6);
+}
+
+#blog-info {
+    
+    margin-left: 30%; 
+    padding-left: 1em;
+}
+
+
+/* Tables */
+form {
+    background-color: #4182d6;
+    padding: 1em;
+    color: white;
+    margin:5%;
+    text-align: center;
+}
+
+input {
+    margin: 1em;
+    padding: 1em;
+    border: none;
+    width: calc(100% - 4em);
+}
+
+input:invalid {
+    border: 3px solid lightcoral;
+}
+
+input:focus, textarea:focus {
+    background-color: #d0e4ff;
+    transition: 0.5s;
+}
+
+
+textarea {
+    padding: 1em;
+    margin:1em;
+    height: 150px;
+    border: none;
+    width: calc(100% - 4em);
+    resize: vertical;
+}
+
+#blog-button {
+    width: 30%;
+    background-color: #182a41;
+    color: white;
+}
+
+#blog-button:hover {
+    background-color: #8ebefe;
+}
+
+/* ------------------ footer ------------------ */
+footer {
+    background-color: white;
+    color:#0d1622;
+    margin:calc(var(--skew-padding) + 1em) 1em 1em 1em;
+    padding: 0.5em;
+    text-align: center;
+}
+
+footer > a > img {
+    margin: 0 1em 0 1em;
+    width: 10%;
+    max-width: 48px;
+}
